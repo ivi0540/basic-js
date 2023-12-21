@@ -14,19 +14,47 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 class DepthCalculator {
   calculateDepth(arr) {
-    let depth = 1;
-    function calculate(arr) {
+    function removeLayer(arr) {
+      let result = [];
       arr.map((elem) => {
         if (Array.isArray(elem)) {
-          depth += 1;
-          calculate(elem);
+          elem.map((elemElem) => {
+            result.push(elemElem);
+          });
         }
       });
-      return depth;
-    };
-    depth = calculate(arr);
-    return depth;
-  }
+      return result;
+    }
+
+    function isArrInArr(arr) {
+      let result = false;
+      arr.map((elem) => {
+        if (Array.isArray(elem)) {
+          result = true;
+        }
+      });
+      return result;
+    }
+
+    let count = 1;
+    function countNumberLayers(arr) {
+      let copyArr = arr;
+      if (isArrInArr(copyArr)) {
+        count += 1;
+        copyArr = removeLayer(copyArr);
+        if (isArrInArr(copyArr)) {
+          countNumberLayers(copyArr)
+        }
+      }
+      return count;
+    }
+
+    if (!Array.isArray(arr)) {
+      return 0;
+    } else {
+      return countNumberLayers(arr);
+    }
+  };
 }
 
 module.exports = {
