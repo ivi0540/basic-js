@@ -7,7 +7,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  * @return {Array}
  *
  * @example
- * arr = [-1, 150, 190, 170, -1, -1, 160, 180]
+ * arr = [-1, 150, 190, 170, -1, -1, 160, 180] 4444
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
