@@ -31,8 +31,8 @@ const chainMaker = {
       this.data = newArr;
       return this;
     } else {
-      // let error = new Error("You can't remove incorrect link!");
-      // throw error;
+      let error = new Error("You can't remove incorrect link!");
+      throw error;
       return this;
     }
   },
